@@ -6,3 +6,8 @@ GIT
 Ramu
 Ravi
 Devops class
+satish
+sravan
+srinu
+sandeep
+shudeer
