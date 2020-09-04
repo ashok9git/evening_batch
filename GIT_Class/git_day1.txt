@@ -1,0 +1,118 @@
+*********** GIT ************
+
+Git Index:
+==========
+
+1. Introduction to git
+2. Terminology
+3. Repo
+4. gitignore
+5. logs
+6. Branching
+7. Merging
+8. stash
+9. unstaging(rm, reset, revert)
+10. Tags
+11. bisect
+12. HEAD
+13. git-hub
+
+Git is a Source Code Management(SCM) / Version Control system / Distributed version control  system
+
+--> Types of SCM tools 
+	* Git,
+	* CVS,
+	* Perforce,
+	* clearcase,
+	* svn
+
+git:- it is a process of tracking and controlling/maintaining changes of a software product
+
+--> Download git from https://git-scm.com/
+    which git --> path of git where it installed
+    git --version -->to verify 
+    git help config
+
+git features compare to other tools:-
+	1. Speed
+	2. Support for non-linear development(thounds of parallel branches)
+	3. distributed version control system
+	4. Able to handle large projects like linux efficiently
+
+Why Git is Distributed Version Control system:-
+	1. Speed
+	2. Network Issues
+	3. we can share the changes to any users and centralized server
+	4. it stores in the form of snapshots i.e diff b/n existing file data and currently modified file data.
+	     commit id/check in :- with 40 char long
+	5. in workspace we've 3 stages before commit id get generated
+	        --> working dir:- where you working with files physically
+	        --> Staging Area:- it helps to create commit id(it is virtual area , here workspace don't know which one is existing and modified data)
+	        --> Repository:- where stores data (commited file)
+
+Git Terminology:-
+=================
+1. client/server
+2. workspace: - space where the client comm with server
+3. Repository : - it is a container/Directory. for each product/project we've one repository in the server.
+4. Branch :- parallel development
+5. Checkin:- Once the changes done, storing back to the server to maintain perminentaly
+6  Checkout:- Taking petmission from server to do modifications.	
+7. Revision/Version id/commit id : - git will track all the info of changes done by a user like when,which repo,who,which file, what changes) 
+
+git config:-
+-----------
+git config --global user.name "yourname"
+git config --global user.email "yourmailid"
+git config --global push.default simple
+git config --list
+
+
+local  : By default, git config will write to a local level if no configuration option is passed. .git/config
+global : Global level configuration is user-specific, meaning it is applied to an operating system user. 
+         Global configuration values are stored in C:\Users\vinodh\.gitconfig
+		Ex:- One of the most common use cases for git config is configuring which editor Git should use. 
+		     editor = VIM
+		Ex:- Merging Tools 
+		     git config --global merge.tool kdiff3
+system : System-level configuration is applied across an entire machine. This covers all users on an operating system and all repos.
+	 Global configuration values are stored in C:\Program Files\Git\mingw64\etc\gitconfig
+git config --edit/--list --local
+git config --edit --global
+git config --edit --system
+
+creating Repositorys:-
+1. bare repo: is the centrailized repository which is used to store and share the changes. 
+2. non-bare repo: user (or) workspace (or) local repository whih is used to modify the changes.
+
+mkdir central.git
+git init --bare
+git clone central.git <source>  vinuspace <dest>
+create file in workspace 
+move to staging area : git add java
+move from staging repo : git commit -m "first chickin"
+
+-->git log : list of all the commits will display
+--> set of changes together with single version id: git add . (or) java, oracle...etc
+
+if you don't have the same content then-->Modified/Untracked files
+if you have same content in the file then --> Unmodified 
+
+--> git push <source> <dest>
+--> git push enter : to push the changes to repository for sharing to other users
+--> 2nd user access the repo and created new file and pushed it to central repo and now
+     1user want to update things what user2 changed. then use
+-->git pull
+
+	      
+Log viewing:
+============
+--> git log -3
+--> git log --oneline --grep "workspace"
+--> git log --grep "stringmasg" --oneline
+--> git shortlog
+--> git log --stat
+git show --stat 23rt459bf
+git show --name-status 23rt45bf
+git show --name-only abc
+git log -p abc
